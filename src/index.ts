@@ -29,8 +29,8 @@ import 'dotenv/config';
 
   const now = new Date();
   const mailOpt = {
-    // to: 'qhdgkdbs@gmail.com',
-    to: 'itjustbong@itjustbong.me',
+    from: 'itjustbong@itjustbong.me',
+    to: 'qhdgkdbs@gmail.com',
     subject: `${now.getMonth() + 1}월 ${now.getDate()}일 Velog 뉴스레터`,
     html: templatedView,
   };
