@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.2.2",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "nodemailer": "^6.8.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18"
+    "@types/node": "^18.11.18",
+    "@types/nodemailer": "^6.4.7"
   }
 }

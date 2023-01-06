@@ -23,14 +23,10 @@ export class VelogCrawler implements iCrawler {
         title: $(this).find('h4').text(),
         subTitle: $(this).find('p').text(),
         image: $(this).find('img').attr('src') || '',
-        link: `https://velog.io/${$(this).find('a').attr('href')}`,
+        link: `https://velog.io${$(this).find('a').attr('href')}`,
         author: $(this).find('b').text(),
       });
     });
     return velogPosts;
-  }
-
-  generateContents() {
-    return '';
   }
 }
