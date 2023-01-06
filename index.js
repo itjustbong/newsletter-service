@@ -1,7 +1,7 @@
-// import { SUPABASE_URL, SUPABASE_KEY } from '../env.js';
+import { SUPABASE_URL, SUPABASE_KEY } from './env.js';
 const { createClient } = supabase;
 
-supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const validateEmail = (email) => {
   const re =
