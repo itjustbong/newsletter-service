@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Typescript
-        uses: npm install -g typescript
+        run: npm install -g typescript
 
       - name: Install Pkg
         run: npm install
