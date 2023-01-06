@@ -1,4 +1,9 @@
-export const newsLetterHTML = `<style /><news-contents />`;
+export const newsLetterHTML = `
+<!DOCTYPE html>
+<html lang="ko">
+<head><style /></head>
+<body><news-contents /><body>`;
+
 export const newsLetterCSS = `
 <style>
 img{

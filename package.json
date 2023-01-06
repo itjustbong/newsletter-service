@@ -4,7 +4,7 @@
   "description": "It is a service that uses githubactions to send the latest post of the velog by e-mail.",
   "main": "index.ts",
   "scripts": {
-    "test": "node ./dist/index.js",
+    "start": "node ./dist/index.js",
     "dev": "npx tsc -w"
   },
   "author": "itjustbong",
@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.2.2",
     "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.3",
     "nodemailer": "^6.8.0"
   },
   "devDependencies": {
