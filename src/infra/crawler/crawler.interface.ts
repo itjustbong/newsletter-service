@@ -1,6 +1,6 @@
 export interface iCrawler {
   getHTML(): Promise<string>;
-  parseHTML(orgHTML: string): void;
+  parseHTML(orgHTML: string): any[];
 }
 
 export interface VelogPost {
