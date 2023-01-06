@@ -1,10 +1,12 @@
 import { iCrawler } from '../../infra/crawler/crawler.interface';
+import { iDataBase, SERVICE } from '../../infra/db/db.interface';
 import { iMailer } from '../../infra/mailer/mailer.interface';
 import { newsLetterCSS, newsLetterHTML } from '../../template/newsLetter';
 
 export const sendNewsLetterForVelog = async (
   mailer: iMailer,
-  crawler: iCrawler
+  crawler: iCrawler,
+  Superbase: iDataBase
 ) => {
   const orgHTML = await crawler.getHTML();
   const parsedHTML = crawler.parseHTML(orgHTML);
@@ -26,10 +28,14 @@ export const sendNewsLetterForVelog = async (
     .replace('<news-contents />', newsList)
     .replace('<style />', newsLetterCSS);
 
+  const allUser = await Superbase.getAllUser(SERVICE.VELOG);
+  const emailList = allUser?.map((data: any) => data.user.email).join(', ');
+  console.log(emailList);
+
   const now = new Date();
   const mailOpt = {
     from: 'itjustbong@itjustbong.me',
-    to: 'qhdgkdbs@gmail.com',
+    to: emailList,
     subject: `${now.getMonth() + 1}월 ${now.getDate()}일 Velog 뉴스레터`,
     html: templatedView,
   };
