@@ -33,6 +33,7 @@ export const sendNewsLetterForVelog = async (
     subject: `${now.getMonth() + 1}월 ${now.getDate()}일 Velog 뉴스레터`,
     html: templatedView,
   };
+
   try {
     mailer.sendMail(mailOpt);
   } catch (e) {

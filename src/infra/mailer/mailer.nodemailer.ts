@@ -1,8 +1,20 @@
 import { iMailer } from './mailer.interface';
 import nodemailer from 'nodemailer';
+import 'dotenv/config';
 
 export class NodeMailer implements iMailer {
-  constructor(private _senderID: string, private _senderPW: string) {}
+  private static instance: NodeMailer;
+  private _senderID: string;
+  private _senderPW: string;
+
+  private constructor() {
+    this._senderID = process.env.ID || '';
+    this._senderPW = process.env.PW || '';
+  }
+
+  public static getInstance() {
+    return this.instance || (this.instance = new this());
+  }
 
   async sendMail(option: {
     from: string;

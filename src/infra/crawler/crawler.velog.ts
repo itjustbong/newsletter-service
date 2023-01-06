@@ -3,7 +3,14 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 export class VelogCrawler implements iCrawler {
+  private static instance: VelogCrawler;
   private _targetUrl = 'https://velog.io';
+
+  private constructor() {}
+
+  public static getInstance() {
+    return this.instance || (this.instance = new this());
+  }
 
   async getHTML() {
     try {
