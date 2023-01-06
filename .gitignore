@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+package-lock.json
 
 # Dependency directories
 node_modules/
@@ -15,3 +16,4 @@ node_modules/
 dist
 
 .env
+env.js
