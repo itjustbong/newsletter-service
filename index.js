@@ -1,4 +1,4 @@
-import { SUPABASE_URL, SUPABASE_KEY } from '../env.js';
+// import { SUPABASE_URL, SUPABASE_KEY } from '../env.js';
 const { createClient } = supabase;
 
 supabase = createClient(
