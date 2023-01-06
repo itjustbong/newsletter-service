@@ -112,7 +112,10 @@
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./index.js"></script>
+    <script type="module">
+      import { addUser } from './index.js';
+      window.addUser = addUser;
+    </script>
   </head>
 
   <body translate="no">
@@ -126,6 +129,7 @@
           required="true"
           type="text"
           id="name"
+          name="name"
         />
         <input
           name="email"
@@ -134,7 +138,7 @@
           placeholder="이메일을 입력해주세요"
           type="email"
         />
-        <select id="service">
+        <select id="service" name="service">
           <option selected value="Velog">벨로그</option>
           <option disabled>현재는 벨로그만 지원합니다</option>
         </select>
