@@ -5,7 +5,7 @@ import 'dotenv/config';
 
 (async () => {
   const vCrawler = new VelogCrawler();
-  const nodemailer = new NodeMailer(process.env.ID || '', process.env.PW || '');
+  const nodemailer = new NodeMailer('qhdgkdbs', process.env.PW || '');
 
   const orgHTML = await vCrawler.getHTML();
   const parsedHTML = vCrawler.parseHTML(orgHTML);
