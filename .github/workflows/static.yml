@@ -32,8 +32,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Generate Environment Variables File for Production
         run: |
-          echo "export const SUPABASE_KEY=$SUPABASE_KEY" >> env.js
-          echo "export const SUPABASE_URL=$SUPABASE_URL" >> env.js
+          echo "export const SUPABASE_KEY='$SUPABASE_KEY'" >> env.js
+          echo "export const SUPABASE_URL='$SUPABASE_URL'" >> env.js
         env:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
