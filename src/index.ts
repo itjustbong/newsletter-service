@@ -5,7 +5,7 @@ import 'dotenv/config';
 
 (async () => {
   const vCrawler = new VelogCrawler();
-  const nodemailer = new NodeMailer('qhdgkdbs', process.env.PW || '');
+  const nodemailer = new NodeMailer(process.env.ID || '', process.env.PW || '');
 
   const orgHTML = await vCrawler.getHTML();
   const parsedHTML = vCrawler.parseHTML(orgHTML);
@@ -29,8 +29,8 @@ import 'dotenv/config';
 
   const now = new Date();
   const mailOpt = {
-    from: 'itjustbong@itjustbong.me',
-    to: 'qhdgkdbs@gmail.com',
+    // to: 'qhdgkdbs@gmail.com',
+    to: 'itjustbong@itjustbong.me',
     subject: `${now.getMonth() + 1}월 ${now.getDate()}일 Velog 뉴스레터`,
     html: templatedView,
   };
