@@ -2,7 +2,10 @@ import { iMailer } from './mailer.interface';
 import nodemailer from 'nodemailer';
 
 export class NodeMailer implements iMailer {
-  constructor(private _senderID: string, private _senderPW: string) {}
+  constructor(private _senderID: string, private _senderPW: string) {
+    console.log(_senderID?.length);
+    console.log(_senderPW?.length);
+  }
 
   async sendMail(option: {
     from: string;
