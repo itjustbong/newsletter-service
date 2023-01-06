@@ -40,6 +40,9 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+        env:
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
