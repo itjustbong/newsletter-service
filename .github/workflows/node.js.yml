@@ -22,8 +22,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Typescript compiler
-        uses: iCrawl/action-tsc@v1
+      - name: Install Typescript
+        uses: npm install -g typescript
 
       - name: Install Pkg
         run: npm install
