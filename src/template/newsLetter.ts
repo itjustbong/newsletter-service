@@ -8,7 +8,7 @@ export const newsLetterCSS = `
 <style>
 img{
     flex-shrink: 0;
-    width: 280px;
+    width: 240px;
     height: 160px;
     object-fit: cover;
     border-radius: 1rem;
