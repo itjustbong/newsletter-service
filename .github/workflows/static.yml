@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['client']
+    branches: ['clinet']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,6 +40,9 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+        env:
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
