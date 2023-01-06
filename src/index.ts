@@ -1,12 +1,12 @@
 import { VelogCrawler } from './services/crawler/crawler.velog';
 import { NodeMailer } from './services/mailer/mailer.nodemailer';
 import { newsLetterCSS, newsLetterHTML } from './template/newsLetter';
-require('dotenv').config();
-
-const vCrawler = new VelogCrawler();
-const nodemailer = new NodeMailer(process.env.ID, process.env.PW);
+import 'dotenv/config';
 
 (async () => {
+  const vCrawler = new VelogCrawler();
+  const nodemailer = new NodeMailer(process.env.ID || '', process.env.PW || '');
+
   const orgHTML = await vCrawler.getHTML();
   const parsedHTML = vCrawler.parseHTML(orgHTML);
   const newsList = parsedHTML
