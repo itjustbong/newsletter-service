@@ -28,5 +28,8 @@ jobs:
       - name: Install Pkg
         run: npm install
 
-      - name: Run
+      - name: Tsc build
+        run: npm build
+
+      - name: Run Script
         run: npm start
