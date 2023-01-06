@@ -36,3 +36,5 @@ jobs:
         env:
           ID: ${{ secrets.ID }}
           PW: ${{ secrets.PW }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
