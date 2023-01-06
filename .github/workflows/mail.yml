@@ -32,10 +32,8 @@ jobs:
             ${{ runner.OS }}-build-${{ env.cache-name }}-
             ${{ runner.OS }}-build-
 
-      - name: Run Script
-        run: npm install 
+      - name: Install pkg
+        run: npm install
+
+      - name: Run
         run: npm start
-        env:
-          CI: true
-          ID: ${{ secrets.ID }}
-          PW: ${{ secrets.PW }}
