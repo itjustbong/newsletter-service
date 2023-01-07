@@ -17,9 +17,6 @@ export const sendNewsLetterForVelog = async (
 
   const templatedView = newsLetterHTML.replace('<news-contents />', newsList);
 
-  console.log(templatedView);
-  return;
-
   const allUser = await Superbase.getAllUser(SERVICE.VELOG);
   const emailList =
     allUser?.map((data: any) => data.user.email).join(', ') || [];
