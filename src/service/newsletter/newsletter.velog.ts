@@ -35,6 +35,7 @@ export const sendNewsLetterForVelog = async (
 
   try {
     mailer.sendMail(mailOpt);
+    console.log(`sended to ${emailList.length}`);
   } catch (e) {
     console.log(e);
   }
