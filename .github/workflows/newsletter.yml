@@ -6,8 +6,8 @@ name: Newsletter
 on:
   schedule:
     - cron: '* 11 * * *'
-  # push:
-  #   branches: ['']
+  push:
+    branches: ['main']
 
 jobs:
   build:
