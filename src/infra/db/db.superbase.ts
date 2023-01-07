@@ -21,7 +21,8 @@ export class Superbase implements iDataBase {
     const allUser = await this.supabase
       .from('newsletter')
       .select('*')
-      .eq('service', service);
+      .eq('service', service)
+      .eq('state', 1);
 
     return allUser.data;
   }
