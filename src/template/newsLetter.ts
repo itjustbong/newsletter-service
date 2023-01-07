@@ -16,20 +16,26 @@ export const generateNewsLetterHTMLForVelog = (parsedHTML: VelogPost[]) => {
             style="flex-shrink: 1; object-fit: cover; border-radius: 1rem; border: 1px solid #f0f0f0;" 
             src="${post.image}">
           </img>
-          <div>
-            <div 
-              style="font-size: 1rem; font-weight: bold; margin-bottom: 0.5rem;">
-              ${post.title}
+          
+          <a 
+            style="color: black; text-decoration: none;" 
+            target="_blank" 
+            href="${post.link}">
+            <div>
+              <div 
+                style="font-size: 1rem; font-weight: bold; margin-bottom: 0.5rem;">
+                ${post.title}
+              </div>
+              <div 
+                style="font-size: 0.875rem;">
+                ${post.subTitle?.slice(0, 100)}
+              </div>
+              <div 
+                style="position: absolute; bottom: 0px;">
+                by <b>${post.author}</b>
+              </div>
             </div>
-            <div 
-              style="font-size: 0.875rem;">
-              ${post.subTitle?.slice(0, 100)}
-            </div>
-            <div 
-              style="position: absolute; bottom: 0px;">
-              by <b>${post.author}</b>
-            </div>
-          </div>
+          </a>
       </div>`
     )
     .join('');
