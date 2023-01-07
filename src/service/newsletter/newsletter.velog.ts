@@ -1,7 +1,10 @@
 import { iCrawler } from '../../infra/crawler/crawler.interface';
 import { iDataBase, SERVICE } from '../../infra/db/db.interface';
 import { iMailer } from '../../infra/mailer/mailer.interface';
-import { newsLetterCSS, newsLetterHTML } from '../../template/newsLetter';
+import {
+  generateNewsLetterHTMLForVelog,
+  newsLetterHTML,
+} from '../../template/newsLetter';
 
 export const sendNewsLetterForVelog = async (
   mailer: iMailer,
@@ -10,23 +13,9 @@ export const sendNewsLetterForVelog = async (
 ) => {
   const orgHTML = await crawler.getHTML();
   const parsedHTML = crawler.parseHTML(orgHTML);
-  const newsList = parsedHTML
-    .map(
-      (post) =>
-        `<div class="container" onclick="window.open('${post.link}')">
-            <img src=${post.image}></img>
-            <div>
-              <div class="title">${post.title}</div>
-              <div class="subtitle">${post.subTitle?.slice(0, 100)}</div>
-              <div class="author">by <b>${post.author}</b></div>
-            </div>
-        </div>`
-    )
-    .join('');
+  const newsList = generateNewsLetterHTMLForVelog(parsedHTML);
 
-  const templatedView = newsLetterHTML
-    .replace('<news-contents />', newsList)
-    .replace('<style />', newsLetterCSS);
+  const templatedView = newsLetterHTML.replace('<news-contents />', newsList);
 
   console.log(templatedView);
   return;

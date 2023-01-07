@@ -1,6 +1,7 @@
-import { iCrawler, VelogPost } from './crawler.interface';
+import { iCrawler } from './crawler.interface';
 import axios from 'axios';
 import cheerio from 'cheerio';
+import { VelogPost } from '../../model/model.velog';
 
 export class VelogCrawler implements iCrawler {
   private static instance: VelogCrawler;
