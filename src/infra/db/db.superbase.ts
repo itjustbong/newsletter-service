@@ -22,7 +22,7 @@ export class Superbase implements iDataBase {
       .from('newsletter')
       .select('*')
       .eq('service', service)
-      .eq('state', 2);
+      .eq('state', 1);
 
     return allUser.data;
   }
