@@ -28,6 +28,9 @@ export const sendNewsLetterForVelog = async (
     .replace('<news-contents />', newsList)
     .replace('<style />', newsLetterCSS);
 
+  console.log(templatedView);
+  return;
+
   const allUser = await Superbase.getAllUser(SERVICE.VELOG);
   const emailList =
     allUser?.map((data: any) => data.user.email).join(', ') || [];
