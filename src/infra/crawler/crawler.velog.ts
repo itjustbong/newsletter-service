@@ -1,40 +1,46 @@
 import { iCrawler } from './crawler.interface';
 import axios from 'axios';
 import cheerio from 'cheerio';
-import { VelogPost } from '../../model/model.velog';
+import { ParsedSrcType } from '../../model/model';
 
 export class VelogCrawler implements iCrawler {
   private static instance: VelogCrawler;
   private _targetUrl = 'https://velog.io';
+  private _src?: string;
 
   private constructor() {}
-
   public static getInstance() {
     return this.instance || (this.instance = new this());
   }
 
-  async getHTML() {
+  async fetchSrc() {
     try {
+      if (this._src) return this;
       const result = await axios.get(this._targetUrl);
-      return result.data;
+      this._src = result.data;
+      return this;
     } catch (error) {
       console.error(error);
     }
   }
 
-  parseHTML(orgHTML: any) {
-    let velogPosts: VelogPost[] = [];
-    const $ = cheerio.load(orgHTML);
+  parseSrc() {
+    if (!this._src) {
+      new Error(
+        'parseSrc은 fetchSrc가 정상적으로 완료된 이후에 호출할 수 있습니다.'
+      );
+    }
+    let parsedSrc: ParsedSrcType[] = [];
+    const $ = cheerio.load(this._src as string);
     const $contentBoxs = $('main > div > div');
     $contentBoxs.each(function () {
-      velogPosts.push({
+      parsedSrc.push({
         title: $(this).find('h4').text(),
         subTitle: $(this).find('p').text(),
-        image: $(this).find('img').attr('src') || '',
         link: `https://velog.io${$(this).find('a').attr('href')}`,
-        author: $(this).find('b').text(),
+        image: $(this).find('img').attr('src') || '',
       });
     });
-    return velogPosts;
+    return parsedSrc;
   }
 }

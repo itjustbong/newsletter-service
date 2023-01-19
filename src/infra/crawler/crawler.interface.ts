@@ -1,6 +1,6 @@
-import { VelogPost } from '../../model/model.velog';
+import { ParsedSrcType } from '../../model/model';
 
 export interface iCrawler {
-  getHTML(): Promise<string>;
-  parseHTML(orgHTML: string): VelogPost[];
+  fetchSrc(): Promise<unknown>;
+  parseSrc(orgHTML: string): ParsedSrcType[];
 }

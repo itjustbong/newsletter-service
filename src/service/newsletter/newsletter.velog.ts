@@ -11,8 +11,8 @@ export const sendNewsLetterForVelog = async (
   crawler: iCrawler,
   Superbase: iDataBase
 ) => {
-  const orgHTML = await crawler.getHTML();
-  const parsedHTML = crawler.parseHTML(orgHTML);
+  const orgHTML = (await crawler.getSrc()) as string;
+  const parsedHTML = crawler.parseSrc(orgHTML);
   const newsList = generateNewsLetterHTMLForVelog(parsedHTML);
 
   const templatedView = newsLetterHTML.replace('<news-contents />', newsList);
