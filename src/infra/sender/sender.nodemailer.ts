@@ -1,8 +1,8 @@
-import { iMailer } from './mailer.interface';
+import { iSender } from './sender.interface';
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
-export class NodeMailer implements iMailer {
+export class NodeMailer implements iSender {
   private static instance: NodeMailer;
   private _senderID: string;
   private _senderPW: string;
@@ -16,9 +16,9 @@ export class NodeMailer implements iMailer {
     return this.instance || (this.instance = new this());
   }
 
-  async sendMail(option: {
+  async send(option: {
     from: string;
-    to: string;
+    bcc: string;
     subject: string;
     html: string;
   }) {

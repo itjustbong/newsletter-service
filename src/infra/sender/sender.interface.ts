@@ -1,7 +1,7 @@
-export interface iMailer {
-  sendMail(option: {
+export interface iSender {
+  send(option: {
     from: string;
-    to: string;
+    bcc: string;
     subject: string;
     html: string;
   }): void;

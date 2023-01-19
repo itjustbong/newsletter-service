@@ -1,11 +1,11 @@
-import { VelogPost } from '../model/model.velog';
+import { ParsedSrcType } from '../model/model';
 
-export const newsLetterHTML = `
+const newsLetterHTML = `
 <!DOCTYPE html>
 <html lang="ko">
 <body><news-contents /><body>`;
 
-export const generateNewsLetterHTMLForVelog = (parsedHTML: VelogPost[]) => {
+export const buildVelogTemplate = (parsedHTML: ParsedSrcType[]) => {
   const newsList = parsedHTML
     .map(
       (post) =>
@@ -30,15 +30,13 @@ export const generateNewsLetterHTMLForVelog = (parsedHTML: VelogPost[]) => {
                 style="font-size: 0.875rem;">
                 ${post.subTitle?.slice(0, 100)}
               </div>
-              <div 
-                style="position: absolute; bottom: 0px;">
-                by <b>${post.author}</b>
-              </div>
             </div>
           </a>
       </div>`
     )
     .join('');
 
-  return newsList;
+  const templatedView = newsLetterHTML.replace('<news-contents />', newsList);
+
+  return templatedView;
 };
